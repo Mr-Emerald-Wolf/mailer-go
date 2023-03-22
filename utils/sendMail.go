@@ -22,7 +22,7 @@ func SendMail(s string, b string) error {
 	m := gomail.NewMessage()
 
 	// Set E-Mail sender
-	m.SetHeader("From", "shivamsharma2002@gmail.com")
+	m.SetHeader("From", os.Getenv("SENDER_MAIL"))
 
 	// Set E-Mail receivers
 	m.SetHeader("To", os.Getenv("RECIEVER_MAIL"))
@@ -34,7 +34,7 @@ func SendMail(s string, b string) error {
 	m.SetBody("text/plain", "This is Gomail test body")
 
 	// Settings for SMTP server
-	d := gomail.NewDialer("smtp.gmail.com", 587, "shivamsharma2002@gmail.com", "qyhinxmfdaobcqvo")
+	d := gomail.NewDialer("smtp.gmail.com", 587, os.Getenv("SENDER_MAIL"), os.Getenv("SENDER_PASS"))
 
 	// This is only needed when SSL/TLS certificate is not valid on server.
 	// In production this should be set to false.
