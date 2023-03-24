@@ -28,10 +28,10 @@ func SendMail(s string, b string) error {
 	m.SetHeader("To", os.Getenv("RECIEVER_MAIL"))
 
 	// Set E-Mail subject
-	m.SetHeader("Subject", "Gomail test subject")
+	m.SetHeader("Subject", s)
 
 	// Set E-Mail body. You can set plain text or html with text/html
-	m.SetBody("text/plain", "This is Gomail test body")
+	m.SetBody("text/plain", b)
 
 	// Settings for SMTP server
 	d := gomail.NewDialer("smtp.gmail.com", 587, os.Getenv("SENDER_MAIL"), os.Getenv("SENDER_PASS"))
